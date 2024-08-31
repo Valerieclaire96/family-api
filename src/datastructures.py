@@ -23,11 +23,11 @@ class FamilyStructure:
     #     return randint(0, 99999999)
 
     def add_member(self, member):
-        # fill this method and update the return
+        # Add a member to the members list
         if "id" not in member:
-            member["id"] = randint(0, 99999999)
-
+            member["id"] = self._generate_id()
         self._members.append(member)
+        return member  # Returning the added member can be useful
 
 
     def delete_member(self, id):
@@ -40,13 +40,11 @@ class FamilyStructure:
         # self._members = new_family
         
 
-    def get_member(self, id):
-        # fill this method and update the return
-        member = list(filter(lambda member:member["id"] == id, self._members))
-        
-        if len(member) > 0:
-            return member[0]
-        
+     def get_member(self, id):
+        # Return a member from the members list by id
+        for member in self._members:
+            if member["id"] == id:
+                return member
         return None
         
     # this method is done, it returns a list with all the family members
